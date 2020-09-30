@@ -1,4 +1,4 @@
-package com.artarkatesoft.learncamel.mock;
+package com.artarkatesoft.learncamel.routes.mock;
 
 import org.apache.camel.builder.RouteBuilder;
 

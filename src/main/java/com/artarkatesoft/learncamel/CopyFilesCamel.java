@@ -1,6 +1,6 @@
 package com.artarkatesoft.learncamel;
 
-import com.artarkatesoft.learncamel.file.CopyFilesRoute;
+import com.artarkatesoft.learncamel.routes.file.CopyFilesRoute;
 import org.apache.camel.CamelContext;
 import org.apache.camel.impl.DefaultCamelContext;
 

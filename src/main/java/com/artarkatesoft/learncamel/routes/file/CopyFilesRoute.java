@@ -1,4 +1,4 @@
-package com.artarkatesoft.learncamel.file;
+package com.artarkatesoft.learncamel.routes.file;
 
 import org.apache.camel.builder.RouteBuilder;
 
