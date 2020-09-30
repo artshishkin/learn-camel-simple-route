@@ -1,5 +1,6 @@
 package com.artarkatesoft.learncamel.routes.direct;
 
+import com.artarkatesoft.learncamel.routes.helper.Helper;
 import org.apache.camel.Exchange;
 import org.apache.camel.RoutesBuilder;
 import org.apache.camel.test.junit5.CamelTestSupport;
@@ -8,10 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,13 +23,7 @@ class SampleDirectRouteTest extends CamelTestSupport {
     @Override
     @BeforeEach
     public void setUp() throws Exception {
-        if (Files.exists(dirPath))
-            Files.walk(dirPath)
-                    .sorted(Comparator.reverseOrder())
-                    .map(Path::toFile)
-                    .forEach(File::delete);
-
-        log.warn("Directory id {}deleted", Files.notExists(dirPath) ? "" : "NOT ");
+        Helper.deleteDirectory(dirPath);
         super.setUp();
     }
 

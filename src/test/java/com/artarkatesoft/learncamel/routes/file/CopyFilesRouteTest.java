@@ -1,15 +1,14 @@
 package com.artarkatesoft.learncamel.routes.file;
 
+import com.artarkatesoft.learncamel.routes.helper.Helper;
 import org.apache.camel.RoutesBuilder;
 import org.apache.camel.test.junit5.CamelTestSupport;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,13 +26,7 @@ class CopyFilesRouteTest extends CamelTestSupport {
     @Override
     @BeforeEach
     public void setUp() throws Exception {
-        if (Files.exists(dirPath))
-            Files.walk(dirPath)
-                    .sorted(Comparator.reverseOrder())
-                    .map(Path::toFile)
-                    .forEach(File::delete);
-
-        log.warn("Directory id deleted: " + Files.notExists(dirPath));
+        Helper.deleteDirectory(dirPath);
         super.setUp();
     }
 
