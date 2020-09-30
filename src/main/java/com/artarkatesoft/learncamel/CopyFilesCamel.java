@@ -14,12 +14,16 @@ public class CopyFilesCamel {
                 public void configure() throws Exception {
                     from("file:data/input?noop=true")
                             .to("log:?level=INFO&showBody=true&showHeaders=true")
-                            .to("file:data/output");
+                            .to("file:data/output")
+                            .to("file:data/output_reserve");
+
+                    from("file:data/input2?noop=true")
+                            .to("file:data/output2");
                 }
             });
 
             context.start();
-            Thread.sleep(5000);
+            Thread.sleep(1500);
             context.stop();
         } catch (Exception exception) {
             exception.printStackTrace();
