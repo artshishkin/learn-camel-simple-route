@@ -5,3 +5,7 @@
 ##### 08 - Logging in Camel
 
 -  search `apache camel log components`
+
+##### 12 - Camel Architecture
+
+-  search `apache camel components`
