@@ -5,6 +5,7 @@ import org.apache.camel.RoutesBuilder;
 import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
@@ -33,5 +34,9 @@ class UnmarshalFixedLengthRouteTest extends CamelTestSupport {
         assertThat(friends.get(1).getBirthDate(), equalTo(LocalDate.of(1983, Month.FEBRUARY, 13)));
         assertThat(friends.get(0).getAge(), equalTo(37));
 
+        BigDecimal expectedArtSalary = new BigDecimal("80000.00");
+        assertThat(friends.get(0).getSalary(), equalTo(expectedArtSalary));
+        BigDecimal expectedKateSalary = new BigDecimal("90000.00");
+        assertThat(friends.get(1).getSalary(), equalTo(expectedKateSalary));
     }
 }

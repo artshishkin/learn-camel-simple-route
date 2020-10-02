@@ -3,6 +3,7 @@ package com.artarkatesoft.learncamel.domain;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 import org.apache.camel.dataformat.bindy.annotation.FixedLengthRecord;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @FixedLengthRecord(ignoreTrailingChars = true)
@@ -17,6 +18,8 @@ public class FriendWithFixedLength {
     private LocalDate birthDate;
     @DataField(pos = 5, delimiter = "^")
     private int age;
+    @DataField(pos = 6, length = 6, precision = 2)
+    private BigDecimal salary;
 
     public String getId() {
         return id;
@@ -58,21 +61,12 @@ public class FriendWithFixedLength {
         this.age = age;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FriendWithFixedLength that = (FriendWithFixedLength) o;
-        return age == that.age &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(firstName, that.firstName) &&
-                Objects.equals(lastName, that.lastName) &&
-                Objects.equals(birthDate, that.birthDate);
+    public BigDecimal getSalary() {
+        return salary;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, birthDate, age);
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
     }
 
     @Override
@@ -83,6 +77,7 @@ public class FriendWithFixedLength {
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
                 ", age=" + age +
+                ", salary=" + salary +
                 '}';
     }
 }
