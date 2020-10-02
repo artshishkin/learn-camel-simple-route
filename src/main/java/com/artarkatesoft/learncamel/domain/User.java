@@ -18,6 +18,16 @@ public class User {
     @Link
     private Address address;
 
+    public User() {
+    }
+
+    public User(String id, String firstName, String lastName, Address address) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+    }
+
     public String getId() {
         return id;
     }

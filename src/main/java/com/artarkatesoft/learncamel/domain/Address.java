@@ -14,6 +14,16 @@ public class Address {
     @DataField(pos = 7)
     private String country;
 
+    public Address() {
+    }
+
+    public Address(String addressLine, String city, String state, String country) {
+        this.addressLine = addressLine;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+    }
+
     public String getAddressLine() {
         return addressLine;
     }
