@@ -31,6 +31,7 @@ class UnmarshalFixedLengthRouteTest extends CamelTestSupport {
         assertThat(friends.get(0).getFirstName(), equalTo("Art"));
         assertThat(friends.get(1).getLastName(), equalTo("Shyshkina"));
         assertThat(friends.get(1).getBirthDate(), equalTo(LocalDate.of(1983, Month.FEBRUARY, 13)));
+        assertThat(friends.get(0).getAge(), equalTo(37));
 
     }
 }

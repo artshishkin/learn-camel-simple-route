@@ -4,7 +4,6 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
 import org.apache.camel.dataformat.bindy.annotation.FixedLengthRecord;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 @FixedLengthRecord(ignoreTrailingChars = true)
 public class FriendWithFixedLength {
@@ -16,6 +15,8 @@ public class FriendWithFixedLength {
     private String lastName;
     @DataField(pos = 4, length = 9, pattern = "ddMMMyyyy")
     private LocalDate birthDate;
+    @DataField(pos = 5, delimiter = "^")
+    private int age;
 
     public String getId() {
         return id;
@@ -49,12 +50,21 @@ public class FriendWithFixedLength {
         this.birthDate = birthDate;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FriendWithFixedLength that = (FriendWithFixedLength) o;
-        return Objects.equals(id, that.id) &&
+        return age == that.age &&
+                Objects.equals(id, that.id) &&
                 Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName) &&
                 Objects.equals(birthDate, that.birthDate);
@@ -62,7 +72,7 @@ public class FriendWithFixedLength {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, birthDate);
+        return Objects.hash(id, firstName, lastName, birthDate, age);
     }
 
     @Override
@@ -72,6 +82,7 @@ public class FriendWithFixedLength {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
+                ", age=" + age +
                 '}';
     }
 }
