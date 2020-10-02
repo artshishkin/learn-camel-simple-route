@@ -5,6 +5,8 @@ import org.apache.camel.RoutesBuilder;
 import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -28,6 +30,7 @@ class UnmarshalFixedLengthRouteTest extends CamelTestSupport {
         assertThat(friends.size(), equalTo(2));
         assertThat(friends.get(0).getFirstName(), equalTo("Art"));
         assertThat(friends.get(1).getLastName(), equalTo("Shyshkina"));
+        assertThat(friends.get(1).getBirthDate(), equalTo(LocalDate.of(1983, Month.FEBRUARY, 13)));
 
     }
 }

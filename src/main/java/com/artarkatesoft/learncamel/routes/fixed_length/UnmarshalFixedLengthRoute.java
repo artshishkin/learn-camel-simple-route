@@ -9,6 +9,7 @@ public class UnmarshalFixedLengthRoute extends RouteBuilder {
     public void configure() throws Exception {
 
         BindyFixedLengthDataFormat dataFormat = new BindyFixedLengthDataFormat(FriendWithFixedLength.class);
+        dataFormat.setLocale("us");
 
         from("file:data/fixedlength/input?fileName=friends-fixed-length.txt&noop=true")
                 .log("Input message ${body}")
