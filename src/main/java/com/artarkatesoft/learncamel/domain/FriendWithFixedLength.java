@@ -14,7 +14,7 @@ public class FriendWithFixedLength {
     private String firstName;
     @DataField(pos = 3, length = 15, trim = true, align = "L")
     private String lastName;
-    @DataField(pos = 4, length = 9, pattern = "ddMMMYYYY")
+    @DataField(pos = 4, length = 9, pattern = "ddMMMyyyy")
     private LocalDate birthDate;
 
     public String getId() {
