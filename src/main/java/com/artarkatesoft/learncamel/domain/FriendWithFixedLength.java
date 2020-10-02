@@ -3,6 +3,7 @@ package com.artarkatesoft.learncamel.domain;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 import org.apache.camel.dataformat.bindy.annotation.FixedLengthRecord;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 @FixedLengthRecord(ignoreTrailingChars = true)
@@ -13,15 +14,8 @@ public class FriendWithFixedLength {
     private String firstName;
     @DataField(pos = 3, length = 15, trim = true, align = "L")
     private String lastName;
-
-    public FriendWithFixedLength() {
-    }
-
-    public FriendWithFixedLength(String id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+    @DataField(pos = 4, length = 9, pattern = "ddMMMYYYY")
+    private LocalDate birthDate;
 
     public String getId() {
         return id;
@@ -47,27 +41,37 @@ public class FriendWithFixedLength {
         this.lastName = lastName;
     }
 
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FriendWithFixedLength friend = (FriendWithFixedLength) o;
-        return Objects.equals(id, friend.id) &&
-                Objects.equals(firstName, friend.firstName) &&
-                Objects.equals(lastName, friend.lastName);
+        FriendWithFixedLength that = (FriendWithFixedLength) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(birthDate, that.birthDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
+        return Objects.hash(id, firstName, lastName, birthDate);
     }
 
     @Override
     public String toString() {
-        return "Friend{" +
+        return "FriendWithFixedLength{" +
                 "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
                 '}';
     }
 }
