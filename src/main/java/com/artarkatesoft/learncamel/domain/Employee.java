@@ -28,4 +28,13 @@ public class Employee {
     public void setJoinDate(String joinDate) {
         this.joinDate = joinDate;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", joinDate='" + joinDate + '\'' +
+                '}';
+    }
 }
