@@ -1,4 +1,4 @@
-package com.artarkatesoft.learncamel.routes.errorhandling;
+package com.artarkatesoft.learncamel.routes.errorhandling.defaulterror;
 
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.RoutesBuilder;

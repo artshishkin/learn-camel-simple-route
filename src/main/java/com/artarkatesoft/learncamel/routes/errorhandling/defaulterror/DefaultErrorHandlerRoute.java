@@ -1,5 +1,6 @@
-package com.artarkatesoft.learncamel.routes.errorhandling;
+package com.artarkatesoft.learncamel.routes.errorhandling.defaulterror;
 
+import com.artarkatesoft.learncamel.routes.errorhandling.DataModifierWithException;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
