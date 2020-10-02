@@ -5,14 +5,23 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
 
 import java.util.Objects;
 
-@CsvRecord(separator = ",", skipFirstLine = true)
+@CsvRecord(separator = ",", skipFirstLine = true, generateHeaderColumns = true)
 public class Friend {
-    @DataField(pos = 1)
+    @DataField(pos = 1, columnName = "id")
     private String id;
-    @DataField(pos = 2)
+    @DataField(pos = 2, columnName = "first_name")
     private String firstName;
-    @DataField(pos = 3)
+    @DataField(pos = 3, columnName = "last_name")
     private String lastName;
+
+    public Friend() {
+    }
+
+    public Friend(String id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public String getId() {
         return id;
