@@ -52,7 +52,7 @@ class MarshalFixedLengthFileRouteTest extends CamelTestSupport {
         friend.setLastName("Last" + id);
         friend.setSalary(new BigDecimal(id * 1000));
         friend.setAge(37 - id);
-        friend.setBirthDate(LocalDate.now().minusYears(friend.getAge()).minusWeeks(id));
+        friend.setBirthDate(LocalDate.of(2020, 10, 2).minusYears(friend.getAge()).minusWeeks(id));
         return friend;
     }
 
