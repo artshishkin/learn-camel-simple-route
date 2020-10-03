@@ -34,5 +34,8 @@ class ContentBasedRouterEIPRouteTest extends CamelTestSupport {
         assertTrue(Files.exists(Path.of("data/eip/content_based_router/output/json/art.json")));
         assertTrue(Files.exists(Path.of("data/eip/content_based_router/output/html/index.html")));
         assertTrue(Files.exists(Path.of("data/eip/content_based_router/output/other/system.log")));
+
+        assertTrue(Files.exists(Path.of("data/eip/content_based_router/output/all/index.html")));
+        assertTrue(Files.notExists(Path.of("data/eip/content_based_router/output/all/system.log")));
     }
 }
