@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class OnExceptionHandlerRouteTest {
 
@@ -54,7 +53,31 @@ class OnExceptionHandlerRouteTest {
             String requestBody = template.requestBody("direct:exception", input, String.class);
 
             //then
-            assertEquals("Exception happened in the route",requestBody);
+            assertEquals("Exception happened in the route", requestBody);
+        }
+    }
+
+    @Nested
+    @DisplayName("Test for Approach 2 - Ignoring Exceptions")
+    class OnExceptionTest_Continued extends CamelTestSupport {
+
+        @Override
+        protected RoutesBuilder createRouteBuilder() throws Exception {
+            OnExceptionHandlerRoute onExceptionHandlerRoute = new OnExceptionHandlerRoute(false);
+            onExceptionHandlerRoute.setContinueExecution(true);
+            return onExceptionHandlerRoute;
+        }
+
+        @Test
+        void onExceptionCheck() {
+            //given
+            String input = null;
+
+            //when
+            String requestBody = template.requestBody("direct:exception", input, String.class);
+
+            //then
+            assertNull(requestBody);
         }
     }
 

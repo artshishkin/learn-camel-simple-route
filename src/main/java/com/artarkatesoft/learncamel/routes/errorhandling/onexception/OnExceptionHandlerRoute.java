@@ -11,6 +11,7 @@ public class OnExceptionHandlerRoute extends RouteBuilder {
     private final boolean handleException;
 
     private boolean messageToKafka = false;
+    private boolean continueExecution = false;
 
     public OnExceptionHandlerRoute() {
         this(false);
@@ -26,6 +27,10 @@ public class OnExceptionHandlerRoute extends RouteBuilder {
 
     public void setMessageToKafka(boolean messageToKafka) {
         this.messageToKafka = messageToKafka;
+    }
+
+    public void setContinueExecution(boolean continueExecution) {
+        this.continueExecution = continueExecution;
     }
 
     @Override
@@ -45,6 +50,9 @@ public class OnExceptionHandlerRoute extends RouteBuilder {
         if (messageToKafka)
             definition
                     .to("kafka:errortopic");
+
+        if (continueExecution)
+            definition.continued(true);
 
         onException(RuntimeException.class).log(LoggingLevel.WARN, "Runtime Exception in Bean caught");
         onException(Exception.class).log(LoggingLevel.ERROR, "Exception in Bean caught");
