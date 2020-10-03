@@ -11,3 +11,4 @@
 .idea/
 /data/csv/output/
 /data/fixedlength/output/
+**/output/
